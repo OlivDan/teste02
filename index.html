@@ -1,0 +1,434 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+<!-- Adicionar pré-carregamento para imagens críticas -->
+    <link rel="preload" href="imagens/background.jpg" as="image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica especializada em psicologia infantil com atendimento personalizado para TDAH, traumas, superdotação e outros. Agende sua consulta.">
+    <meta name="keywords" content="psicologia infantil, terapia criança, TDAH, autismo, superdotação, trauma infantil">
+    <title>PsicoInfância - Especialistas em Psicologia Infantil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background: #2c3e50;
+            margin: 5px 0;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 66px;
+        }
+
+        /* Seções */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        /* Terapias */
+        .grid-terapias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .terapia-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .terapia-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Depoimentos */
+        .depoimentos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            background: #e8f4f8;
+            padding: 40px 20px;
+        }
+
+        .depoimento-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .depoimento-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .faq-item summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Formulário */
+        .form-contato {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus, textarea:focus {
+            outline: 2px solid #27ae60;
+            border-color: transparent;
+        }
+
+        button {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #219a52;
+            transform: translateY(-2px);
+        }
+
+        /* Galeria */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Redes Sociais */
+        .redes-sociais {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .redes-sociais img {
+            width: 45px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+
+        .redes-sociais img:hover {
+            transform: scale(1.1);
+        }
+
+        /* WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            padding: 18px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+        .redes-sociais i {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    transition: all 0.3s;
+    margin: 0 15px;
+}
+
+.redes-sociais i:hover {
+    color: #27ae60;
+    transform: scale(1.1);
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PsicoInfância</div>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div>
+            <h1>Cuidando do Futuro com Expertise e Afeto</h1>
+            <p>Psicologia Infantil Especializada • Atendimento Personalizado • 15 Anos de Experiência</p>
+        </div>
+    </header>
+
+    <section id="sobre" class="section">
+        <h2>Sobre Nós</h2>
+        <p>Na PsicoInfância, combinamos conhecimento científico com atendimento humanizado. Nossa equipe multidisciplinar possui especialização em psicologia infantil e vasta experiência no tratamento de:</p>
+        <div class="grid-terapias">
+            <div class="terapia-card">
+                <h3>Traumas e Luto</h3>
+                <p>Acompanhamento especializado para superação de eventos traumáticos</p>
+            </div>
+            <div class="terapia-card">
+                <h3>TDAH</h3>
+                <p>Estratégias comprovadas para manejo comportamental</p>
+            </div>
+            <div class="terapia-card">
+                <h3>Superdotação</h3>
+                <p>Desenvolvimento do potencial intelectual com equilíbrio emocional</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="depoimentos">
+        <h2 style="grid-column: 1/-1">Depoimentos</h2>
+        <div class="depoimento-card">
+            <p>"Transformaram a vida do meu filho! Profissionais extremamente capacitados e com abordagem acolhedora."</p>
+            <p><em>Mãe do Pedro, 9 anos (TDAH)</em></p>
+        </div>
+        <div class="depoimento-card">
+            <p>"Agradeço pelo apoio durante o processo de luto. Meu filho conseguiu expressar suas emoções de forma saudável."</p>
+            <p><em>Pai da Ana, 7 anos</em></p>
+        </div>
+        <div class="depoimento-card">
+            <p>"Ajudaram a vida do meu filho e de minha família! Profissionais incríveis."</p>
+            <p><em>Mãe da Mariana, 4 anos (TDAH)</em></p>
+        </div>
+        <div class="depoimento-card">
+            <p>"Agradeço demais e recomendo. "</p>
+            <p><em>Pai da Júlia, 8 anos</em></p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-item">
+            <summary>Como é a primeira consulta?</summary>
+            <p>Iniciamos com entrevista familiar para compreensão completa do histórico, seguida de sessões lúdicas com a criança.</p>
+        </div>
+        <div class="faq-item">
+            <summary>Quanto tempo dura o tratamento?</summary>
+            <p>Variável conforme cada caso, com avaliações periódicas para acompanhamento do progresso.</p>
+        </div>
+    </section>
+
+    <div class="galeria" align=center>
+        <img src="ambiente-clinica.jpg" alt="Ambiente acolhedor">
+        <img src="atendimento.jpg" alt="Sessão terapêutica">
+        <img src="equipe.jpg" alt="Nossa equipe">
+    </div>
+
+    <section id="contato" class="section">
+        <h2>Agende uma Avaliação</h2>
+        <form class="form-contato" action="https://formsubmit.co/alvesxxxx@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-group">
+                <input type="text" name="nome" placeholder="Nome completo" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="telefone" placeholder="Telefone com DDD" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="E-mail válido" required>
+            </div>
+            <div class="form-group">
+                <textarea name="mensagem" placeholder="Como podemos ajudar?" rows="5" required></textarea>
+            </div>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+      
+      <div class="redes-sociais">
+        <a href="https://facebook.com" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank">
+        <i class="fab fa-instagram"></i>
+        </a>
+       </div>
+
+
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">💬</a>
+
+    <footer style="text-align: center; padding: 30px; background: #f4f4f4;">
+        <p>© 2024 PsicoInfância - Todos os direitos reservados</p>
+        <p style="margin-top: 15px; font-size: 0.9em;">
+            Imagens por: <a href="https://freepik.com">Freepik</a> e 
+            <a href="https://unsplash.com">Unsplash</a>
+        </p>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Fechar menu ao clicar fora (mobile)
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
